@@ -8,19 +8,31 @@ lower_left = (0, screen_height)
 lower_right = (screen_width,screen_height)
 upper_right = (screen_width,0)
 
+vertical_center = (screen_width/2)
+horizontal_center = (screen_height/2)
+
+
+red = (255, 0, 0)
+blue = (100, 100, 200)
+black = (0,0,0)
+white = (255,255,255)
+
+
+####################################################################
 
 screen = pygame.display.set_mode([screen_width, screen_height])
-
-
 
 while True:
 	event = pygame.event.poll()
 	if event.type == pygame.QUIT:
 		break
 	
-	screen.fill((255,230,240))
-	pygame.draw.line(screen, (255, 0, 0), (upper_left), (lower_right))
-	pygame.draw.aaline(screen, (100, 100, 200), (upper_right), (lower_left))
+	screen.fill(white)
+	pygame.draw.line(screen, red, upper_left, lower_right)
+	pygame.draw.aaline(screen, blue, upper_right, lower_left)
+	
+	
+	pygame.draw.line(screen,black,(vertical_center,0),(vertical_center,screen_height))
 	
 	
 	pygame.display.flip()
