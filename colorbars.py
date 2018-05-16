@@ -11,7 +11,7 @@ barcolor = []
 for i in range(1, color_height):
 	barcolor.append((i*gradient_intensity, 0, (i*gradient_intensity) ))
 for i in range(1, color_height):
-    barcolor.append((i*gradient_intensity, 0, (255 - i*4gradient_intensity) ))
+    barcolor.append((255 - i*gradient_intensity, 0, (255 - i*gradient_intensity) ))
 	
  
 while running:
