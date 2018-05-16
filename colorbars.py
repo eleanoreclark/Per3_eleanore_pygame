@@ -5,12 +5,14 @@ running = 1
 barheight = 124
 color_height = int((barheight/2)+1)
 screen = pygame.display.set_mode((800, 600));
+gradient_intensity = 4
+
  
 barcolor = []
 for i in range(1, color_height):
-	barcolor.append((0, 0, (i*4) ))
+	barcolor.append((255*gradient_intensity, 255*gradient_intensity, (i*gradient_intensity) ))
 for i in range(1, color_height):
-    barcolor.append((0, 0, (255 - i*4) ))
+    barcolor.append((255*gradient_intensity, 255*gradient_intensity, (255 - i*gradient_intensity) ))
 	
  
 while running:
