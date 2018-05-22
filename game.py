@@ -5,7 +5,6 @@ running = True
 drawn = False
 
 up_velo = 1
-y_coordinate = 400
 
 while running:
 	event = pygame.event.poll()
@@ -17,16 +16,16 @@ while running:
 	screen.fill((40, 40, 40))
 	
 	
-	player = pygame.Surface((10, 50))
-	player.fill((255, 255, 255))
-	player.set_colorkey((255,0,0))
+	surf = pygame.Surface((10, 50))
+	surf.fill((255, 255, 255))
+	surf.set_colorkey((255,0,0))
 	
-	blitted_player = screen.blit(player, (200,y_coordinate))
+	blitted_player = screen.blit(surf, (200,up_velo))
 	
-	'''for i in range(1, 100):
-		i += i*.01
+	for i in range (1,10):
 		up_velo = (100 - (i*i) )
-		y_coordinate = y_coordinate + up_velo'''
+		if up_velo > 360:
+			up_velo = 0
 
 	pygame.display.flip()
 	
