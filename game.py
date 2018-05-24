@@ -1,31 +1,60 @@
 import pygame
+import time
 pygame.init()
-screen = pygame.display.set_mode((400, 400))
+
+screen_height = 400
+screen_width = 500
+screen = pygame.display.set_mode((screen_width, screen_height))
 running = True
 drawn = False
 
-up_velo = 1
+
+surf = pygame.Surface((10, 50))
+surf.fill((255, 255, 255))
+surf.set_colorkey((255,0,0))
+
+def jump():
+	ycoord = screen_height - 50
+	
+	for i in range(1,2500,1):
+	
+		ycoord = (ycoord**0.9997)#/2 #-(10/(i/2))
+		
+		screen.fill((40, 40, 40))
+		screen.blit(surf, (200,(ycoord)))
+		
+		print(ycoord)
+		pygame.display.flip()
+		
+	for i in range(1,2500,1):
+		ycoord = (ycoord**1.0003)#/2 #(10 * (i/2) )
+		screen.fill((40, 40, 40))
+		screen.blit(surf, (200,(ycoord)))
+		
+		print(ycoord)
+		pygame.display.flip()
+		
+	
+
+
 
 while running:
 	event = pygame.event.poll()
 	if event.type == pygame.QUIT:
 		running = False
+	pressed = pygame.key.get_pressed()
+	if pressed[pygame.K_SPACE]:
+		print("jump!")
+		jump()
+	
 
+	
+	blitted_player = screen.blit(surf, ( (screen_width/2) , screen_height))
+	
+	#jump()
 
+		
 
-	screen.fill((40, 40, 40))
-	
-	
-	surf = pygame.Surface((10, 50))
-	surf.fill((255, 255, 255))
-	surf.set_colorkey((255,0,0))
-	
-	blitted_player = screen.blit(surf, (200,up_velo))
-	
-	for i in range (1,10):
-		up_velo = (100 - (i*i) )
-		if up_velo > 360:
-			up_velo = 0
 
 	pygame.display.flip()
 	
