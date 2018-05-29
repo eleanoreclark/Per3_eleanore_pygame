@@ -27,11 +27,11 @@ def jump():
 	
 	screen.blit(surf, (int(screen_width/2), current_coord) ) 
 	
-	
+	#jump_step += 1
 	for i in range(1,3000,1):
 		screen.fill((40, 40, 40))
 		
-		velocity = (velocity*.9990)
+		velocity = (velocity*.999)
 		current_coord -= velocity	
 		screen.blit(surf, ( int(screen_width/2), current_coord ))
 	
@@ -41,7 +41,7 @@ def jump():
 	for i in range(1,3000,1):
 		screen.fill((40, 40, 40))
 		
-		velocity = (velocity*1.0010)
+		velocity = (velocity*1.001)
 		current_coord += velocity	
 		screen.blit(surf, ( int(screen_width/2), current_coord ))
 	
