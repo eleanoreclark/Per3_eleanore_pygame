@@ -9,7 +9,11 @@ running = True
 drawn = False
 
 #make the player:
-surf = pygame.Surface((10, 50))
+player_height = 30
+jump_height = 300
+
+
+surf = pygame.Surface((10, player_height))
 surf.fill((255, 255, 255))
 surf.set_colorkey((255,0,0))
 
@@ -18,27 +22,32 @@ screen.fill((40, 40, 40))
 
 
 def jump():
-	ycoord = screen_height - 50
+	current_coord = screen_height - player_height
+	velocity = .2
 	
-	for i in range(1,2500,1):
+	screen.blit(surf, (int(screen_width/2), current_coord) ) 
+	
+	
+	for i in range(1,3000,1):
 		screen.fill((40, 40, 40))
-		ycoord = (ycoord**0.9997)
-		screen.blit(surf, (200,(ycoord)))
 		
-		print(ycoord)
+		velocity = (velocity*.9990)
+		current_coord -= velocity	
+		screen.blit(surf, ( int(screen_width/2), current_coord ))
+	
 		pygame.display.flip()
 		
-	for i in range(1,2500,1):
-		screen.fill((40, 40, 40))
-		ycoord = (ycoord**1.0003)		
-		screen.blit(surf, (200,(ycoord)))
 		
-		print(ycoord)
+	for i in range(1,3000,1):
+		screen.fill((40, 40, 40))
+		
+		velocity = (velocity*1.0010)
+		current_coord += velocity	
+		screen.blit(surf, ( int(screen_width/2), current_coord ))
+	
 		pygame.display.flip()
 		
 	
-
-
 
 while running:
 	event = pygame.event.poll()
@@ -49,12 +58,7 @@ while running:
 		print("jump!")
 		jump()
 	
-	blitted_player = screen.blit(surf, ( (screen_width/2) , screen_height))
-	
-	#jump()
-
-		
-
+	screen.blit(surf, ( (screen_width/2) , screen_height))
 
 	pygame.display.flip()
 	
